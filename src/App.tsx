@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+// Import styles of packages that you've installed.
+// All packages except `@mantine/hooks` require styles imports
+import "@mantine/core/styles.css";
+
+import { AppShell, MantineProvider, NavLink, ScrollArea } from "@mantine/core";
+import { Outlet } from "react-router-dom";
+import { IconUserCircle, IconHome2, IconLogout } from '@tabler/icons-react'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <MantineProvider defaultColorScheme="auto">
+      <AppShell navbar={{ width: 200, breakpoint: "xs" }}>
+        <AppShell.Navbar>
+          <AppShell.Section>Navigation</AppShell.Section>
+          <AppShell.Section grow component={ScrollArea}>
+          <NavLink
+            href="/"
+            label="Home"
+            leftSection={<IconHome2 size={24} strokeWidth={1.5} />}
+            variant="subtle"
+            active
+            color="white"
+            />
+          <NavLink
+            href="/users"
+            label="Users"
+            leftSection={<IconUserCircle size={24} strokeWidth={1.5} />}
+            variant="subtle"
+            active
+            color="white"
+          />
+          <NavLink
+            href="/logout"
+            label="Logout"
+            leftSection={<IconLogout size={24} strokeWidth={1.5} />}
+            variant="subtle"
+            active
+            color="white"
+          />
+          </AppShell.Section>
+          <AppShell.Section>
+            
+          </AppShell.Section>
+        </AppShell.Navbar>
+        <AppShell.Main>
+          <Outlet />
+        </AppShell.Main>
+      </AppShell>
+    </MantineProvider>
+  );
 }
 
-export default App
+export default App;
