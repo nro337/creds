@@ -4,10 +4,19 @@ import "./App.css";
 import "@mantine/core/styles.css";
 
 import { AppShell, MantineProvider, NavLink, ScrollArea } from "@mantine/core";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { IconUserCircle, IconHome2, IconLogout } from '@tabler/icons-react'
+import Pocketbase from 'pocketbase';
 
 function App() {
+
+  const base_url = import.meta.env.VITE_BASE
+  const pb = new Pocketbase(base_url);
+
+  // if (!pb.authStore.isValid) {
+  //   return <Navigate to="/login" replace={true} />;
+  //   // return navigate('/login', {replace: true});
+  // }
 
   return (
     <MantineProvider defaultColorScheme="auto">
@@ -16,7 +25,7 @@ function App() {
           <AppShell.Section>Navigation</AppShell.Section>
           <AppShell.Section grow component={ScrollArea}>
           <NavLink
-            href="/"
+            href="/home"
             label="Home"
             leftSection={<IconHome2 size={24} strokeWidth={1.5} />}
             variant="subtle"
@@ -46,6 +55,9 @@ function App() {
         </AppShell.Navbar>
         <AppShell.Main>
           <Outlet />
+            {
+              !pb.authStore.isValid && <Link to={'/login'}>Login</Link>
+            }
         </AppShell.Main>
       </AppShell>
     </MantineProvider>

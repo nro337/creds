@@ -12,6 +12,7 @@ import Users from './routes/Users.tsx';
 import { getUsers } from './queries/getUsers.ts';
 import Login from './components/Login.tsx';
 import Logout from './components/Logout.tsx';
+import Home from './components/Home.tsx';
 
 export async function userLoader() {
   const users = await getUsers();
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: '/home',
+        element: <Home  />,
+        errorElement: <ErrorPage />, 
+      },
       {
         path: 'test',
         element: <div>test</div>,

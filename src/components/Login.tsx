@@ -55,9 +55,9 @@ const Login = () => {
   }
 
   return (
-    <Box maw={340} mx="auto">
+    <Box maw={500} miw={400} mx="auto" pt={"xl"}>
       <Card>
-        <CardSection>Login</CardSection>
+        <CardSection component="h1" py={"md"}>Login</CardSection>
         <form onSubmit={form.onSubmit((values) => handleSubmit({username: values.email, password: values.password}))}>
           <TextInput
             withAsterisk
