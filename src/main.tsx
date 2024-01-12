@@ -13,10 +13,17 @@ import { getUsers } from './queries/getUsers.ts';
 import Login from './components/Login.tsx';
 import Logout from './components/Logout.tsx';
 import Home from './components/Home.tsx';
+import { getCreds } from './queries/getCreds.ts';
+import Creds from './routes/Creds.tsx';
 
 export async function userLoader() {
   const users = await getUsers();
   return { users };
+}
+
+export async function credsLoader() {
+  const creds = await getCreds();
+  return { creds };
 }
 
 const router = createBrowserRouter([
@@ -40,6 +47,12 @@ const router = createBrowserRouter([
         element: <Users />,
         errorElement: <ErrorPage />,
         loader: userLoader,
+      },
+      {
+        path: 'credentials',
+        element: <Creds />,
+        errorElement: <ErrorPage />,
+        loader: credsLoader,
       },
       {
         path: 'login',

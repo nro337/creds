@@ -1,18 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import Pocketbase from 'pocketbase';
+import { useEffect } from "react";
 
 const Logout = () => {
 
   const navigate = useNavigate();
 
-  async function logout() {
-    const base_url = import.meta.env.VITE_BASE
-    const pb = new Pocketbase(base_url);
-    await pb.authStore.clear();
-    return navigate('/login', {replace: true});
-  }
-
-  logout();
+  useEffect(() => {
+    async function logout() {
+      const base_url = import.meta.env.VITE_BASE
+      const pb = new Pocketbase(base_url);
+      await pb.authStore.clear();
+      return navigate('/login', {replace: true});
+    }
+  
+    logout();
+  }, [navigate])
 
 
   return (
