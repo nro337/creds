@@ -2,6 +2,7 @@ import "./App.css";
 // Import styles of packages that you've installed.
 // All packages except `@mantine/hooks` require styles imports
 import "@mantine/core/styles.css";
+import 'mantine-react-table/styles.css';
 
 import { AppShell, Group, MantineProvider, NavLink, ScrollArea } from "@mantine/core";
 import { Link, Outlet } from "react-router-dom";
