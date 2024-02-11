@@ -69,6 +69,10 @@ const CredsTable = ({creds}:{creds: Cred[]}) => {
         header: 'Cert Id',
       },
       {
+        accessorKey: 'credential_type',
+        header: 'Credential Type',
+      },
+      {
         accessorKey: 'date_issued',
         header: 'Date Issued',
       },
@@ -79,6 +83,10 @@ const CredsTable = ({creds}:{creds: Cred[]}) => {
       {
         accessorKey: 'owner',
         header: 'Owner',
+      },
+      {
+        accessorKey: 'custom_cred.id',
+        header: 'Custom Cred Id',
       }
     ],
     [],

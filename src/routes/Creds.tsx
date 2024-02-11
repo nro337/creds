@@ -2,7 +2,7 @@ import { Navigate, useLoaderData } from "react-router-dom";
 import Pocketbase from "pocketbase";
 import { Cred } from "../types/Cred";
 import CredsTable from "../components/CredsTable";
-import { Center } from "@mantine/core";
+import { Button, Center, Flex } from "@mantine/core";
 
 const Creds = () => {
   const base_url = import.meta.env.VITE_BASE;
@@ -24,6 +24,13 @@ const Creds = () => {
         <h1>Your Credentials</h1>
       </Center>
       {credsList.length > 0 && <CredsTable creds={credsList} />}
+      {credsList.length > 0 && (
+        <Flex direction={"row"} justify={"flex-end"} align={"center"} mt={16}>
+          <Button variant="outline">
+            <a href="/add-credential">Add Credential</a>
+          </Button>
+        </Flex>
+      )}
     </div>
   );
 };

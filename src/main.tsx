@@ -15,6 +15,7 @@ import Logout from './components/Logout.tsx';
 import Home from './components/Home.tsx';
 import { getCreds } from './queries/getCreds.ts';
 import Creds from './routes/Creds.tsx';
+import AddCredential from './routes/AddCredential.tsx';
 
 export async function userLoader() {
   const users = await getUsers();
@@ -53,6 +54,11 @@ const router = createBrowserRouter([
         element: <Creds />,
         errorElement: <ErrorPage />,
         loader: credsLoader,
+      },
+      {
+        path: 'add-credential',
+        element: <AddCredential />,
+        errorElement: <ErrorPage />,
       },
       {
         path: 'login',

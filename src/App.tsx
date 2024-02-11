@@ -6,7 +6,7 @@ import 'mantine-react-table/styles.css';
 
 import { AppShell, Group, MantineProvider, NavLink, ScrollArea } from "@mantine/core";
 import { Link, Outlet } from "react-router-dom";
-import { IconUserCircle, IconHome2, IconLogout, IconLicense } from '@tabler/icons-react'
+import { IconUserCircle, IconHome2, IconLogout, IconLicense, IconPlus } from '@tabler/icons-react'
 import Pocketbase from 'pocketbase';
 import UserMenu from "./routes/UserMenu";
 
@@ -51,6 +51,14 @@ function App() {
             href="/users"
             label="Users"
             leftSection={<IconUserCircle size={24} strokeWidth={1.5} />}
+            variant="subtle"
+            active
+            color="white"
+          />
+          <NavLink
+            href="/add-credential"
+            label="Add Credentials"
+            leftSection={<IconPlus size={24} strokeWidth={1.5} />}
             variant="subtle"
             active
             color="white"
