@@ -1,7 +1,7 @@
 import { CustomCred } from "./CustomCred";
 
 export type Cred = {
-  id: string;
+  id?: string | undefined;
   cert_id: string;
   date_issued: string;
   owner: string;

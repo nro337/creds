@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
     "@mantine/carousel": "^7.4.1",
     "@mantine/core": "^7.4.1",
     "@mantine/dates": "^7.4.1",
